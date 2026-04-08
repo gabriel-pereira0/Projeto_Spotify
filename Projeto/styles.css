@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.sidebar {
+  width: 300px;
+  background-color: #121212;
+  padding: 10px;
+  padding-bottom: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-logo i {
+  font-size: 24px;
+  color: #1db954;
+}
+
+.nav-library {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-library i,
+.nav-library p {
+  font-size: 14px;
+  color: #b7b3b6;
+  cursor: pointer;
+}
+
+.nav-playlist,
+.nav-podcast {
+  background-color: #242424;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.nav-playlist button,
+.nav-podcast button {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 6px 10px;
+  margin-top: 16px;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 20px;
+  transition: transform 0.1s;
+}
+
+.nav-playlist button:hover,
+.nav-podcast button:hover {
+  transform: scale(1.1);
+}
+
+.nav-futter {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-futter a {
+  color: #a7a7a7;
+  text-decoration: none;
+  font-size: 12px;
+  margin: 12px;
+  margin-bottom: 8px;
+}
+
+.nav-leng-button {
+  background-color: transparent;
+  border: 1px solid #6e6e6e;
+  padding: 8px 12px;
+  margin-top: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.2s;
+  line-height: 1px;
+}
+
+.nav-leng-button:hover {
+  transform: scale(1.05);
+  border: 1px solid #fff;
+}
+
+main {
+  padding: 24px;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #242424;
+  padding: 8px 16px;
+  border-radius: 20px;
+  width: 300px;
+}
+
+.search-bar input {
+  background-color: transparent;
+  border: none;
+  color: white;
+  width: 100%;
+  margin-left: 10px;
+  outline: none;
+}
+
+.content a {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.content a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.artists-grid,
+.albums-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.artist-card,
+.album-card {
+  background-color: #181818;
+  margin-top: 10px;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+.artist-card:hover,
+.album-card:hover {
+  background-color: #282828;
+}
+
+.artist-card::after,
+.album-card::after {
+  content: '';
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-image: url('https://img.icons8.com/?size=100&id=59756&format=png&color=1DB954');
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: opacity 0.1s ease;
+  opacity: 0;
+}
+
+.artist-card:hover::after,
+.album-card:hover::after {
+  opacity: 1;
+}
+
+.artist-card img {
+  width: 100%;
+  border-radius: 50%;
+  margin-bottom: 26px;
+  max-height: 70%;
+}
+
+.album-card img {
+  width: 100%;
+  border-radius: 8%;
+  margin-bottom: 26px;
+  max-height: 70%;
+}
+
+.artist-card h3,
+.album-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.artist-card p,
+.album-card p {
+  font-size: 14px;
+  color: #b7b3b6;
+}
+
+.content {
+  margin-top: 40px;
+}
+
+.content h2 {
+  margin-bottom: 10px;
+}
+
+.banner {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #af2896, #509bf5);
+}
+
+.content h2 {
+  font-size: 14px;
+}
+
+.content p {
+  font-size: 10px;
+}
+
+.banner button {
+  border-radius: 20px;
+  color: #000;
+  border: none;
+  padding: 12px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.banner button:hover {
+  transform: scale(1.05);
+}
