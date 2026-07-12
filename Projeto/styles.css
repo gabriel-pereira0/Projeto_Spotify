@@ -138,7 +138,8 @@ main {
 }
 
 .artists-grid,
-.albums-grid {
+.albums-grid,
+.paradas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 24px;
@@ -146,7 +147,8 @@ main {
 }
 
 .artist-card,
-.album-card {
+.album-card,
+.paradas-card {
   background-color: #181818;
   margin-top: 10px;
   border-radius: 8px;
@@ -161,28 +163,37 @@ main {
 }
 
 .artist-card:hover,
-.album-card:hover {
+.album-card:hover,
+.paradas-card:hover {
   background-color: #282828;
 }
 
 .artist-card::after,
-.album-card::after {
+.album-card::after,
+.paradas-card::after {
   content: '';
   position: absolute;
-  right: 30px;
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-  background-image: url('https://img.icons8.com/?size=100&id=59756&format=png&color=1DB954');
-  background-size: cover;
+
+  width: 40px;
+  height: 40px;
+
+  background-image: url('https://img.icons8.com/sf-regular-filled/48/play.png');
+  background-color: #39db72;
+  background-size: 18px 18px;
+  background-position: center;
   background-repeat: no-repeat;
+  border-radius: 50%;
+
   transition: opacity 0.1s ease;
   opacity: 0;
 }
 
 .artist-card:hover::after,
-.album-card:hover::after {
+.album-card:hover::after,
+.paradas-card:hover::after {
   opacity: 1;
 }
 
@@ -200,16 +211,34 @@ main {
   max-height: 70%;
 }
 
+.paradas-card img {
+  width: 100%;
+  border-radius: 8%;
+  margin-bottom: 26px;
+  max-height: 70%;
+}
+
 .artist-card h3,
-.album-card h3 {
+.album-card h3,
+.paradas-card h3 {
   font-size: 16px;
   margin-bottom: 8px;
 }
 
 .artist-card p,
-.album-card p {
+.album-card p,
+.paradas-card p {
   font-size: 14px;
   color: #b7b3b6;
+}
+
+.paradas-card p {
+  max-width: 220px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
 }
 
 .content {
