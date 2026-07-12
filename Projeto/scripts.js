@@ -48,9 +48,50 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   ];
 
+  const paradasData = [
+    {
+      name: 'Funk Viral',
+      description: 'ginga y balança',
+      Image: './IMG/album-funk-viral.jpg',
+    },
+    {
+      name: 'Paredão Explode',
+      description:
+        'Os hits do forró, arrocha, pagodão e muito mais! Foto: Wesley Safadão',
+      Image: './IMG/album-paredao-explode.jpg',
+    },
+    {
+      name: 'Pagodeira',
+      description: 'Os hits e os próximos clássicos do pagode!',
+      Image: './IMG/album-pagodeira.jpg',
+    },
+    {
+      name: 'Praiana',
+      description: 'Um pouco de reggae pra acompanhar a brisa do mar.',
+      Image: './IMG/album-praiana.jpg',
+    },
+    {
+      name: 'Top 50 - Brasil',
+      description:
+        'Brasil: seu relatório diário das faixas mais tocadas no momento.',
+      Image: './IMG/album-top-50-brazil.jpg',
+    },
+    {
+      name: 'Top 50 - Global',
+      description: 'Faixas mais tocadas no momento.',
+      Image: './IMG/album-top-50-global.jpg',
+    },
+    {
+      name: 'Top Brasil',
+      description: 'Os maiores hits do país. O que tá bombando tá aqui.',
+      Image: './IMG/album-top-brasil.jpg',
+    },
+  ];
+
   // Popula o grid de artistas
   const artistGrid = document.querySelector('.artists-grid');
   const albumsGrid = document.querySelector('.albums-grid');
+  const paradasGrid = document.querySelector('.paradas-grid');
 
   artistData.forEach((artist) => {
     const artistCard = document.createElement('div');
@@ -76,6 +117,19 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
     albumsGrid.appendChild(albumCard);
+  });
+
+  paradasData.forEach((paradas) => {
+    const paradasCard = document.createElement('div');
+    paradasCard.classList.add('paradas-card');
+    paradasCard.innerHTML = `
+      <img src="${paradas.Image}" alt="Capa do álbum ${paradas.name}">
+      <div>
+          <h3>${paradas.name}</h3>
+          <p>${paradas.description}</p>
+      </div>
+    `;
+    paradasGrid.appendChild(paradasCard);
   });
 });
 
