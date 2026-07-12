@@ -1,3 +1,4 @@
+// Script para popular os grids de artistas e álbuns com dados fictícios
 document.addEventListener('DOMContentLoaded', () => {
   const artistData = [
     { name: 'Henrique & Juliano', Image: './IMG/artista-henrique-juliano.jpg' },
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   ];
 
+  // Popula o grid de artistas
   const artistGrid = document.querySelector('.artists-grid');
   const albumsGrid = document.querySelector('.albums-grid');
 
@@ -76,3 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
     albumsGrid.appendChild(albumCard);
   });
 });
+
+// Banner de Premium
+function fecharBanner() {
+  document.getElementById('banner-premium').style.display = 'none';
+}
