@@ -1,0 +1,16 @@
+export const artistData = [
+  { name: 'Metro Boomin', Image: './IMG/artista-metro-boomin.jpg' },
+  { name: 'Kodak Black', Image: './IMG/artista-kodak-black.jpg' },
+  { name: 'Don Toliver', Image: './IMG/artista-don-toliver.jpg' },
+  { name: 'Post Malone', Image: './IMG/artista-post-malone.jpg' },
+  { name: 'Kendrick Lamar', Image: './IMG/artista-kendrick-lamar.jpg' },
+  { name: 'Travis Scott', Image: './IMG/artista-travis-scott.jpg' },
+  { name: 'Drake', Image: './IMG/artista-drake.jpg' },
+  { name: 'BK', Image: './IMG/artista-bk.jpg' },
+  { name: 'Orochi', Image: './IMG/artista-orochi.jpg' },
+  { name: 'Tz da Coronel', Image: './IMG/artista-tz-da-coronel.jpg' },
+  { name: 'Kayblack', Image: './IMG/artista-kayblack.jpg' },
+  { name: 'Filipe Ret', Image: './IMG/artista-filipe-ret.jpg' },
+  { name: 'Alee', Image: './IMG/artista-alee.jpg' },
+  { name: 'Matue', Image: './IMG/artista-matue.jpg' },
+];

@@ -1,0 +1,93 @@
+import { artistData } from './Data/artistas.js';
+import { albumsData } from './Data/albums.js';
+import { paradasData } from './Data/paradas.js';
+
+// Script para popular os grids de artistas e álbuns com dados fictícios
+document.addEventListener('DOMContentLoaded', () => {
+  // Popula o grid de artistas
+  const artistGrid = document.querySelector('.artists-grid');
+  const albumsGrid = document.querySelector('.albums-grid');
+  const paradasGrid = document.querySelector('.paradas-grid');
+
+  artistData.forEach((artist) => {
+    const artistCard = document.createElement('div');
+    artistCard.classList.add('artist-card');
+
+    artistCard.innerHTML = `
+    <img src="${artist.Image}" alt="Imagem do ${artist.name}">
+    <div>
+      <h3>${artist.name}</h3>
+      <p>Artista</p>
+    </div>
+  `;
+
+    artistGrid.appendChild(artistCard);
+  });
+
+  albumsData.forEach((album) => {
+    const albumCard = document.createElement('div');
+    albumCard.classList.add('album-card');
+    albumCard.innerHTML = `
+      <img src="${album.Image}" alt="Capa do álbum ${album.name}">
+      <div>
+          <h3>${album.name}</h3>
+          <p>${album.artist}</p>
+      </div>
+    `;
+    albumsGrid.appendChild(albumCard);
+  });
+
+  paradasData.forEach((paradas) => {
+    const paradasCard = document.createElement('div');
+    paradasCard.classList.add('paradas-card');
+    paradasCard.innerHTML = `
+      <img src="${paradas.Image}" alt="Capa do álbum ${paradas.name}">
+      <div>
+          <h3>${paradas.name}</h3>
+          <p>${paradas.description}</p>
+      </div>
+    `;
+    paradasGrid.appendChild(paradasCard);
+  });
+});
+
+// Banner de Premium
+function fecharBanner() {
+  document.getElementById('banner-premium').style.display = 'none';
+}
+
+window.fecharBanner = fecharBanner;
+
+// Função para mover o carrossel
+function moverCarrossel(botao, direcao) {
+  const container = botao.parentElement;
+  const carrossel = container.querySelector('.carrossel-track');
+
+  carrossel.scrollBy({
+    left: direcao * 500,
+    behavior: 'smooth',
+  });
+
+  setTimeout(() => atualizarBotoesCarrossel(container), 300);
+}
+
+window.moverCarrossel = moverCarrossel;
+
+function atualizarBotoesCarrossel(container) {
+  const carrossel = container.querySelector('.carrossel-track');
+  const botaoAnterior = container.querySelector('.anterior');
+  const botaoProximo = container.querySelector('.proximo');
+
+  const chegouNoInicio = carrossel.scrollLeft <= 0;
+  const chegouNoFim =
+    carrossel.scrollLeft + carrossel.clientWidth >= carrossel.scrollWidth - 1;
+
+  botaoAnterior.disabled = chegouNoInicio;
+  botaoProximo.disabled = chegouNoFim;
+}
+
+window.addEventListener('load', () => {
+  document.querySelectorAll('.carrossel').forEach((container) => {
+    atualizarBotoesCarrossel(container);
+  });
+});
