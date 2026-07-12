@@ -11,11 +11,30 @@
     <title>Dev - Music</title>
   </head>
   <body>
+    <header class="nav-header">
+      <div class="nav-logo">
+        <i class="fa-brands fa-spotify"></i>
+      </div>
+
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input placeholder="O que você quer ouvir?" />
+      </div>
+      <div class="nav-options">
+        <a href="#" class="nav-login">Premium</a>
+        <a href="#" class="nav-login">Suporte</a>
+        <a href="#" class="nav-login">Baixar</a>
+
+        <div>|</div>
+
+        <div class="nav-login">
+          <button class="btn-signup">Inscrever-se</button>
+          <button class="btn-login">Entrar</button>
+        </div>
+      </div>
+    </header>
     <div class="container">
       <nav class="sidebar">
-        <div class="nav-logo">
-          <i class="fa-brands fa-spotify"></i>
-        </div>
         <div class="nav-library">
           <i class="fa-solid fa-bars-staggered"></i>
           <p>Sua Biblioteca +</p>
@@ -44,10 +63,6 @@
         </button>
       </nav>
       <main>
-        <header class="search-bar">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input placeholder="O que você quer ouvir?" />
-        </header>
         <section class="content">
           <a>Artistas Populares</a>
           <div class="carrossel">
