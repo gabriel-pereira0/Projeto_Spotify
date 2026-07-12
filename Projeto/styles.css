@@ -162,6 +162,26 @@ main {
   position: relative;
 }
 
+.artists-grid.carrossel-track,
+.albums-grid.carrossel-track,
+.paradas-grid.carrossel-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.carrossel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.artist-card,
+.album-card,
+.paradas-card {
+  flex: 0 0 calc((100% - 96px) / 5);
+}
+
 .artist-card:hover,
 .album-card:hover,
 .paradas-card:hover {
@@ -174,7 +194,7 @@ main {
   content: '';
   position: absolute;
   right: 20px;
-  top: 50%;
+  top: 60%;
   transform: translateY(-50%);
 
   width: 40px;
@@ -247,6 +267,73 @@ main {
 
 .content h2 {
   margin-bottom: 10px;
+}
+
+.carrossel {
+  position: relative;
+}
+
+.carrossel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+
+  background-color: #2a2a2a;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding: 8px;
+  opacity: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.anterior {
+  left: -12px;
+}
+
+.proximo {
+  right: -12px;
+}
+
+.carrossel-btn:hover {
+  transform: translateY(-50%) scale(1.1);
+  background-color: #3a3a3a;
+}
+
+.carrossel-btn img {
+  width: 15px;
+  height: 15px;
+  filter: brightness(0) invert(1);
+}
+
+.carrossel-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carrossel:hover .carrossel-btn:not(:disabled) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.carrossel-btn:disabled {
+  opacity: 0;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.carrossel:hover .carrossel-btn:disabled {
+  opacity: 0.25;
 }
 
 .banner {
