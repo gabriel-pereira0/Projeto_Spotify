@@ -12,6 +12,16 @@
   </head>
   <body>
     <header class="nav-header">
+      <!-- MOBILE: botão hambúrguer da ponta esquerda, abre/fecha a sidebar (nav.sidebar). Some no desktop via media query -->
+      <button
+        class="menu-toggle menu-toggle-sidebar"
+        id="btnToggleSidebar"
+        aria-label="Abrir menu lateral"
+        aria-expanded="false"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
       <div class="nav-logo">
         <i class="fa-brands fa-spotify"></i>
       </div>
@@ -20,7 +30,7 @@
         <i class="fa-solid fa-magnifying-glass"></i>
         <input placeholder="O que você quer ouvir?" />
       </div>
-      <div class="nav-options">
+      <div class="nav-options" id="navOptions">
         <a href="#" class="nav-login">Premium</a>
         <a href="#" class="nav-login">Suporte</a>
         <a href="#" class="nav-login">Baixar</a>
@@ -32,7 +42,20 @@
           <button class="btn-login">Entrar</button>
         </div>
       </div>
+      <!-- MOBILE: botão hambúrguer da ponta direita, abre/fecha as opções do header (.nav-options) em formato dropdown. Some no desktop -->
+      <button
+        class="menu-toggle menu-toggle-options"
+        id="btnToggleOptions"
+        aria-label="Abrir opções"
+        aria-expanded="false"
+      >
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+      </button>
     </header>
+
+    <!-- MOBILE: camada escura atrás da sidebar quando ela está aberta, clicar nela fecha o menu -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <div class="container">
       <nav class="sidebar">
         <div class="nav-library">

@@ -58,6 +58,63 @@ function fecharBanner() {
 
 window.fecharBanner = fecharBanner;
 
+// Toggle do menu mobile
+document.addEventListener('DOMContentLoaded', () => {
+  const sidebar = document.getElementById('sidebar');
+  const navOptions = document.getElementById('navOptions');
+  const overlay = document.getElementById('sidebarOverlay');
+  const btnSidebar = document.getElementById('btnToggleSidebar');
+  const btnOptions = document.getElementById('btnToggleOptions');
+
+  function abrirSidebar() {
+    sidebar.classList.add('open');
+    overlay.classList.add('active');
+    btnSidebar.setAttribute('aria-expanded', 'true');
+  }
+
+  function fecharSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+    btnSidebar.setAttribute('aria-expanded', 'false');
+  }
+
+  function toggleSidebar() {
+    if (sidebar.classList.contains('open')) {
+      fecharSidebar();
+    } else {
+      // fecha o dropdown de opções antes de abrir a sidebar, evitando os dois abertos juntos
+      navOptions.classList.remove('open');
+      btnOptions.setAttribute('aria-expanded', 'false');
+      abrirSidebar();
+    }
+  }
+
+  function toggleNavOptions() {
+    const vaiAbrir = !navOptions.classList.contains('open');
+    navOptions.classList.toggle('open', vaiAbrir);
+    btnOptions.setAttribute('aria-expanded', String(vaiAbrir));
+    if (vaiAbrir) {
+      // fecha a sidebar antes de abrir as opções, evitando os dois abertos juntos
+      fecharSidebar();
+    }
+  }
+
+  btnSidebar.addEventListener('click', toggleSidebar);
+  btnOptions.addEventListener('click', toggleNavOptions);
+
+  // Clicar na camada escura fecha a sidebar (comportamento comum de "gaveta" mobile)
+  overlay.addEventListener('click', fecharSidebar);
+
+  // Tecla ESC fecha qualquer um dos dois menus, se estiverem abertos
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      fecharSidebar();
+      navOptions.classList.remove('open');
+      btnOptions.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
+
 // Função para mover o carrossel
 function moverCarrossel(botao, direcao) {
   const container = botao.parentElement;
