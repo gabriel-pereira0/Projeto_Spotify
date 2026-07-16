@@ -120,8 +120,15 @@ function moverCarrossel(botao, direcao) {
   const container = botao.parentElement;
   const carrossel = container.querySelector('.carrossel-track');
 
+  const primeiroCard = carrossel.firstElementChild;
+  const larguraCard = primeiroCard
+    ? primeiroCard.getBoundingClientRect().width
+    : 500;
+  const gap = parseFloat(getComputedStyle(carrossel).gap) || 0;
+  const distancia = larguraCard + gap;
+
   carrossel.scrollBy({
-    left: direcao * 500,
+    left: direcao * distancia,
     behavior: 'smooth',
   });
 
