@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-  --header-height: 42px;
+  --header-height: 32px;
   --spacing: 12px;
 }
 
@@ -172,7 +172,7 @@ main::-webkit-scrollbar-thumb:hover {
   min-height: 0;
   border-radius: 8px;
   justify-content: center;
-  padding-top: 10px; /* altura do header + um pequeno espaço */
+  padding-top: 4px;
   background-color: #000000;
   margin: calc(var(--header-height) + (var(--spacing) * 2)) 12px 12px;
 }
@@ -400,6 +400,7 @@ main::-webkit-scrollbar-thumb:hover {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   overflow: hidden;
 }
 
@@ -412,6 +413,7 @@ main::-webkit-scrollbar-thumb:hover {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+  line-clamp: 1;
 }
 
 .content h2 {
@@ -541,4 +543,201 @@ main::-webkit-scrollbar-thumb:hover {
 
 .banner button:hover {
   transform: scale(1.05);
+}
+
+/* RESPONSIVIDADE   */
+@media (max-width: 1350px) {
+  .artist-card,
+  .album-card,
+  .paradas-card {
+    flex: 0 0 calc((100% - 72px) / 4);
+  }
+}
+
+@media (max-width: 1050px) {
+  :root {
+    --header-height: 24px;
+  }
+
+  .nav-logo i {
+    font-size: 32px;
+  }
+
+  .container {
+    padding-top: 2px;
+  }
+
+  .search-bar input,
+  .nav-options a,
+  .btn-login,
+  .btn-signup {
+    font-size: 14px;
+  }
+
+  .artist-card,
+  .album-card,
+  .paradas-card {
+    flex: 0 0 calc((100% - 42px) / 3);
+  }
+}
+
+@media (max-width: 854px) {
+  .nav-header {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 40px 1fr 40px;
+    padding: 0 8px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    backdrop-filter: blur(2px);
+  }
+
+  .menu-toggle-sidebar {
+    justify-self: start;
+  }
+
+  .menu-toggle-options {
+    justify-self: end;
+  }
+
+  .nav-logo {
+    justify-self: center;
+  }
+
+  .search-bar {
+    display: none;
+  }
+
+  .nav-options {
+    position: fixed;
+    top: calc(var(--header-height) + var(--spacing) * 2 + 6px);
+    right: var(--spacing);
+    left: var(--spacing);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    background-color: #242424;
+    border-radius: 8px;
+    padding: 16px;
+    z-index: 20;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .nav-options.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-options .nav-login {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: calc(var(--header-height) + var(--spacing) * 2);
+    bottom: 12px;
+    left: 12px;
+    width: 260px;
+    z-index: 20;
+    transform: translateX(-120%);
+    transition: transform 0.25s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .container {
+    margin: calc(var(--header-height) + (var(--spacing) * 2)) 8px 12px;
+    padding-top: 6px;
+  }
+
+  .main-wrapper {
+    padding: 0;
+    width: 100%;
+  }
+
+  main {
+    padding: 8px 12px;
+  }
+
+  .artist-card,
+  .album-card,
+  .paradas-card {
+    flex: 0 0 38%;
+  }
+
+  .artists-grid,
+  .albums-grid,
+  .paradas-grid {
+    margin: 0 4px 24px;
+    gap: 16px;
+  }
+
+  .carrossel-btn {
+    opacity: 1;
+    pointer-events: auto;
+    width: 26px;
+    height: 26px;
+  }
+
+  .carrossel-btn:disabled {
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .banner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 12px;
+    padding: 16px;
+    margin: 0 8px 8px 8px;
+  }
+
+  .banner button:not(.fechar-banner) {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .content h2 {
+    font-size: 16px;
+  }
+
+  .content p {
+    font-size: 12px;
+  }
+
+  .fechar-banner {
+    top: 4px;
+    right: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .artist-card,
+  .album-card,
+  .paradas-card {
+    flex: 0 0 70%;
+  }
+
+  .carrossel-btn {
+    display: none;
+  }
 }
