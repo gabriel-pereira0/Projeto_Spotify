@@ -150,6 +150,10 @@ main::-webkit-scrollbar-thumb:hover {
   background-color: #fff;
 }
 
+.mobile-only {
+  display: none;
+}
+
 .btn-signup {
   background-color: transparent;
   border: none;
@@ -545,7 +549,7 @@ main::-webkit-scrollbar-thumb:hover {
   transform: scale(1.05);
 }
 
-/* RESPONSIVIDADE   */
+/* RESPONSIVIDADE */
 @media (max-width: 1350px) {
   .artist-card,
   .album-card,
@@ -582,21 +586,43 @@ main::-webkit-scrollbar-thumb:hover {
 }
 
 @media (max-width: 854px) {
+  :root {
+    --container-top: calc(var(--header-height) + var(--spacing));
+  }
+
+  .divisor,
+  .desktop-only,
+  .search-bar {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
   .nav-header {
     display: grid;
-    align-items: center;
     grid-template-columns: 40px 1fr 40px;
+    align-items: center;
+    position: relative;
     padding: 0 8px;
+  }
+
+  .nav-logo {
+    justify-self: center;
   }
 
   .menu-toggle {
     display: flex;
-    align-items: center;
     justify-content: center;
-
+    align-items: center;
+    width: 36px;
+    height: 36px;
     background: rgba(255, 255, 255, 0.12);
+    border: none;
     border-radius: 50%;
     backdrop-filter: blur(2px);
+    cursor: pointer;
   }
 
   .menu-toggle-sidebar {
@@ -605,28 +631,23 @@ main::-webkit-scrollbar-thumb:hover {
 
   .menu-toggle-options {
     justify-self: end;
-  }
-
-  .nav-logo {
-    justify-self: center;
-  }
-
-  .search-bar {
-    display: none;
+    margin-right: 24px;
   }
 
   .nav-options {
     position: fixed;
-    top: calc(var(--header-height) + var(--spacing) * 2 + 6px);
-    right: var(--spacing);
+    top: calc(var(--header-height) + var(--spacing) * 2 + 15px);
     left: var(--spacing);
+    right: var(--spacing);
+
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
-    background-color: #242424;
-    border-radius: 8px;
+
     padding: 16px;
-    z-index: 20;
+    border-radius: 8px;
+    background: #242424;
 
     opacity: 0;
     pointer-events: none;
@@ -634,6 +655,8 @@ main::-webkit-scrollbar-thumb:hover {
     transition:
       opacity 0.2s ease,
       transform 0.2s ease;
+
+    z-index: 25;
   }
 
   .nav-options.open {
@@ -642,21 +665,36 @@ main::-webkit-scrollbar-thumb:hover {
     transform: translateY(0);
   }
 
-  .nav-options .nav-login {
-    width: 100%;
+  .nav-options .nav-login,
+  .nav-actions {
     display: flex;
+    width: 100%;
+  }
+
+  .nav-options .nav-login {
+    gap: 10px;
+  }
+
+  .nav-actions {
+    flex-direction: column;
     gap: 10px;
   }
 
   .sidebar {
     position: fixed;
-    top: calc(var(--header-height) + var(--spacing) * 2);
+    top: calc(var(--header-height) + var(--spacing) * 2 + 15px);
+    left: 20px;
     bottom: 12px;
-    left: 12px;
-    width: 260px;
-    z-index: 20;
+
+    width: 80%;
+    max-width: 260px;
+
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.45);
+
     transform: translateX(-120%);
-    transition: transform 0.25s ease;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    z-index: 30;
   }
 
   .sidebar.open {
@@ -664,13 +702,12 @@ main::-webkit-scrollbar-thumb:hover {
   }
 
   .container {
-    margin: calc(var(--header-height) + (var(--spacing) * 2)) 8px 12px;
-    padding-top: 6px;
+    margin: var(--container-top) 8px 12px;
   }
 
   .main-wrapper {
-    padding: 0;
     width: 100%;
+    padding: 0;
   }
 
   main {
@@ -691,10 +728,10 @@ main::-webkit-scrollbar-thumb:hover {
   }
 
   .carrossel-btn {
-    opacity: 1;
-    pointer-events: auto;
     width: 26px;
     height: 26px;
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .carrossel-btn:disabled {
@@ -703,17 +740,20 @@ main::-webkit-scrollbar-thumb:hover {
   }
 
   .banner {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
-    text-align: center;
     gap: 12px;
+
+    margin: 0 8px 8px;
     padding: 16px;
-    margin: 0 8px 8px 8px;
+
+    text-align: center;
   }
 
   .banner button:not(.fechar-banner) {
-    margin-right: 0;
     width: 100%;
+    margin-right: 0;
   }
 
   .content h2 {
@@ -739,5 +779,15 @@ main::-webkit-scrollbar-thumb:hover {
 
   .carrossel-btn {
     display: none;
+  }
+
+  .banner {
+    padding: 12px;
+    font-size: small;
+  }
+
+  .fechar-banner {
+    top: -12px;
+    right: -12px;
   }
 }
